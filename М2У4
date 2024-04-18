@@ -1,0 +1,25 @@
+import discord
+import os
+from discord.ext import commands
+intents = discord.Intents.default()
+intents.members = True
+intents.message_content = True
+bot = commands.Bot(command_prefix='!', description="Очень интересный бот", intents=intents)
+
+async def on_ready(ctx):
+    print(f'Logged in as {bot.user} !')
+    await ctx.send("Бот в сети!")
+
+@bot.command()
+async def помощь(ctx):
+        await ctx.send("Вы можете выбрать следующие темы: упаковки, мусор")
+
+@bot.command()
+async def упаковки(ctx):
+        await ctx.send("используйте перерабатываемые упаковки")
+@bot.command()
+async def мусор(ctx):
+        await ctx.send("сдавайте перерабатываемый мусор")
+
+bot.run("токен")
+# без понятия зачем я это всё делал
